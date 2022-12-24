@@ -3,28 +3,31 @@ import { v4 as uuidv4 } from 'uuid';
 import { useDispatch } from 'react-redux';
 import { addBook } from '../redux/books/books';
 
-const FormInput = () => {
+const Inputform = () => {
   const [data, setData] = useState({
     title: '',
     author: '',
+    category: 'Fiction',
   });
   const dispatch = useDispatch();
   const changeHandler = (e) => {
-    setData({ ...data, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
   };
   const submitHandler = (e) => {
     e.preventDefault();
     const newBook = {
-      id: uuidv4(),
-      title: data.title,
-      author: data.author,
+      item_id: uuidv4(),
+      ...data,
     };
     dispatch(addBook(newBook));
-    setData({ title: '', author: '' });
   };
   return (
     <div>
-      <form onSubmit={submitHandler}>
+      <form>
         <input
           type="text"
           name="title"
@@ -39,10 +42,10 @@ const FormInput = () => {
           onChange={changeHandler}
           placeholder="Author"
         />
-        <button type="submit">Add Book</button>
+        <button type="submit" onClick={submitHandler}>Add Book</button>
       </form>
     </div>
   );
 };
 
-export default FormInput;
+export default Inputform;

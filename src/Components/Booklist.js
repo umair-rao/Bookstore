@@ -1,14 +1,25 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchBooks } from '../redux/books/books';
 import Books from './Books';
 import Inputform from './Inputform';
 
 const Booklist = () => {
-  const Booklist = useSelector((state) => state.book);
+  const books = useSelector((state) => state.book);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchBooks());
+  });
   return (
     <div>
-      {Booklist.map((book) => (
-        <Books key={book.id} title={book.title} author={book.author} id={book.id} />
+      {books.map((book) => (
+        <Books
+          key={Math.random()}
+          type={book.category}
+          title={book.title}
+          author={book.author}
+          id={book.item_id}
+        />
       ))}
       <Inputform />
     </div>
