@@ -9,18 +9,22 @@ const Booklist = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchBooks());
-  });
+  }, [dispatch]);
   return (
-    <div>
-      {books.map((book) => (
-        <Books
-          key={Math.random()}
-          type={book.category}
-          title={book.title}
-          author={book.author}
-          id={book.item_id}
-        />
-      ))}
+    <div className="book-list">
+      <div>
+        {books.map((book) => (
+          <Books
+            key={Math.random()}
+            type={book.category}
+            title={book.title}
+            author={book.author}
+            id={book.item_id}
+          />
+        ))}
+      </div>
+      <div className="horizontal-divider" />
+
       <Inputform />
     </div>
   );

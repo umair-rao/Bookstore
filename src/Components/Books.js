@@ -12,11 +12,40 @@ const Books = (props) => {
     dispatch(removeBook(id));
   };
   return (
-    <div>
-      <p>{type}</p>
-      <h4>{title}</h4>
-      <p>{author}</p>
-      <button type="button" onClick={() => removeBookHandler(id)}>Remove Book</button>
+    <div className="book">
+      <div className="book-content">
+        <div className="book-info">
+          <h4 className="book-type">{type}</h4>
+          <h2 className="book-title">{title}</h2>
+          <h4 className="book-author">{author}</h4>
+          <div className="action-buttons">
+            <buttton className="comment-btn" type="button">Comments</buttton>
+            <div className="divider" />
+            <button className="remove-btn" type="button" onClick={() => removeBookHandler(id)}>Remove</button>
+            <div className="divider" />
+            <button className="edit-btn" type="button">Edit</button>
+          </div>
+        </div>
+        <div className="progress-container">
+          <div className="circular-progress-container">
+            <div className="circular-progress" />
+          </div>
+          <div className="progress-stat">
+            <p className="percent-complete">64%</p>
+            <p className="completed">Completed</p>
+          </div>
+          <div className="progress-divider" />
+          <div className="current-chapter-container">
+            <div>
+              <p className="current-chapter-label">CURRENT CHAPTER</p>
+              <p className="current-chapter">Chapter 17</p>
+            </div>
+            <div>
+              <button className="primary-button" type="button">UPDATE PROGRESS</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

@@ -27,8 +27,10 @@ const Inputform = () => {
   };
   return (
     <div>
-      <form>
+      <h2 className="form-title">ADD NEW BOOK</h2>
+      <form className="add-form">
         <input
+          className="input title-input"
           type="text"
           name="title"
           value={data.title}
@@ -36,13 +38,14 @@ const Inputform = () => {
           placeholder="Book Title"
         />
         <input
+          className="input category-input"
           type="text"
           name="author"
           value={data.author}
           onChange={changeHandler}
           placeholder="Author"
         />
-        <button type="submit" onClick={submitHandler}>Add Book</button>
+        <button type="submit" className="add-book-btn" onClick={submitHandler}>Add Book</button>
       </form>
     </div>
   );
