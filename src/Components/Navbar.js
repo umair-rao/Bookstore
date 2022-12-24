@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { BsFillPersonFill } from 'react-icons/bs';
 
 const Navbar = () => (
   <nav className="navbar">
@@ -12,6 +13,11 @@ const Navbar = () => (
         <Link to="/categories" className="nav-item">CATEGORIES</Link>
       </li>
     </ul>
+    <button className="icon-button" type="button">
+      <span className="material-icons primary-color">
+        <BsFillPersonFill />
+      </span>
+    </button>
   </nav>
 );
 
